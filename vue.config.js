@@ -46,7 +46,7 @@ module.exports = {
       background: './src/background/main.js',
     },
     output: {
-      filename: 'js/[name].js',
+      filename: '[name].js',
     },
     plugins,
   },
@@ -55,5 +55,11 @@ module.exports = {
     extract: {
       filename: 'css/[name].css',
     },
+  },
+  chainWebpack: (config) => {
+    if (process.env.NODE_ENV === 'production') {
+      config.output.filename('js/[name].js').end();
+      config.output.chunkFilename('js/[name].js').end();
+    }
   },
 };

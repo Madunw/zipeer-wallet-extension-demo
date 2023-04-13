@@ -2,7 +2,6 @@ const ALCHEMY_API_KEY_MAINNET = 'Your Alchemy API Key'
 const ALCHEMY_API_KEY_GOERLI = 'Your Alchemy API Key'
 const INFURA_API_KEY_MAINNET = 'Your Infura API Key'
 
-
 export const mainnet = {
   chainId: '1',
   name: 'Ethereum',

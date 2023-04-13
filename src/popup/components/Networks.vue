@@ -31,6 +31,10 @@ export default {
     switchNetwork(networkName) {
       this.$store.commit('switchNetwork', networkName)
       this.refreshAccountData()
+      this.$message({
+          message: 'Switched to the ' + networkName,
+          type: 'success'
+        })
     },
     refreshAccountData() {
       this.$store.dispatch('getBalance')
@@ -72,6 +76,7 @@ export default {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   cursor: pointer;
+  margin: 0;
 }
 
 .dropdown-content a {

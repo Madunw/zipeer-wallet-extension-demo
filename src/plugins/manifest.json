@@ -1,31 +1,37 @@
 {
-	"manifest_version": 2,
-	"name": "Zipper Wallet",
-	"description": "A simple cryptocurrency wallet app",
-	"version": "1.0.0",
-	"browser_action": {
-		"default_title": "hello-word-plugin",
-		"default_icon": "assets/icon48.png",
-		"default_popup": "popup.html"
-	},
-	"permissions": [],
-	"background": {
-		"scripts": ["js/background.js"]
-	},
-	"icons": {
-		"16": "assets/icon16.png",
-		"48": "assets/icon48.png",
-		"128": "assets/icon128.png"
-	},
-	"content_scripts": [
-		{
-			"matches": ["<all_urls>"],
-			"css": ["css/popup.css"],
-      "js": ["js/chunk-vendors.5d9503fa.js"],
-			"run_at": "document_idle"
-		}
-	],
-	"web_accessible_resources": ["js/inject.js"],
-
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "manifest_version": 3,
+  "name": "Zipper Wallet (Beta)",
+  "description": "A simple cryptocurrency wallet app",
+  "version": "0.0.1",
+  "action": {
+    "default_title": "hello-word-plugin",
+    "default_icon": "assets/icon48.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["css/popup.css"],
+      "js": ["js/chunk-vendors.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["js/inject.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; script-src-elem 'self' 'unsafe-inline' https://music.yandex.ru/;"
+  }
 }
